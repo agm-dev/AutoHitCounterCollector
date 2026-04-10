@@ -1,6 +1,18 @@
 # autohitcounter-collector
 
-An Electron application with React and TypeScript
+An Electron application with React and TypeScript.
+
+## How to use
+
+Launch the app.
+
+Launch the [Auto Hit Counter](https://github.com/borgCode/AutoHitCounter).
+
+Go to settings in the Auto Hit Counter and connect with this collector:
+
+- Enable the External Integration.
+- External URI: http://localhost:3456/hits
+- Runner ID: your nick, email, or any unique identifier.
 
 ## Recommended IDE Setup
 
