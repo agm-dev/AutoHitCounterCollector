@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Dashboard from './components/dashboard/Dashboard';
 
 function App(): React.JSX.Element {
   const [hits, setHits] = useState<Awaited<ReturnType<typeof window.api.getLastEntries>>>([]);
@@ -22,17 +23,9 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <>
-      <div className="app"></div>
-        <h1>Hits:</h1>
-        <ul>
-          {hits.map((hit, index) => (
-            <li key={index}>{hit.id} - {hit.received_at}</li>
-          ))}
-        </ul>
-        <h2>Stats:</h2>
-        <p>Today Hits: {stats?.today}</p>
-    </>
+    <div className="app">
+      <Dashboard stats={stats} hits={hits} />
+    </div>
   )
 }
 

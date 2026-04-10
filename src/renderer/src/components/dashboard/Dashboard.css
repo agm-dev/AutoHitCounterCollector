@@ -1,0 +1,90 @@
+/* dashboard.css */
+
+.container {
+  padding: 12px;
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* STATS GRID */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat-card {
+  background: #1e293b;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+/* LAST HIT */
+.last-hit {
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.big-time {
+  font-size: 28px;
+  font-weight: 700;
+  display: block;
+  margin-top: 6px;
+}
+
+/* TABLE */
+.table-container {
+  overflow-x: auto;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+th, td {
+  padding: 10px;
+  font-size: 13px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+th {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* desktop enhancement */
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .big-time {
+    font-size: 34px;
+  }
+}

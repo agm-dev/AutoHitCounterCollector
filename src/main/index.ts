@@ -8,8 +8,9 @@ import { initDb, getRecentEntries, getStats } from './db'
 function createWindow(): BrowserWindow {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 700,
+    height: 900,
+    title: 'Auto Hit Counter Collector',
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
