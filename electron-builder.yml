@@ -13,6 +13,8 @@ asarUnpack:
   - resources/**
 win:
   executableName: autohitcounter-collector
+  target:
+    - portable
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
