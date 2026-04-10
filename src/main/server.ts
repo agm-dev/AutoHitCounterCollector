@@ -2,6 +2,7 @@ import { BrowserWindow } from 'electron';
 import express, { Request, Response } from 'express';
 import { Server } from 'http';
 import { RawRunEntry, RunEntry } from './types';
+import { insertEntry } from './db';
 
 const REQUIRED_FIELDS: Array<{ key: keyof RawRunEntry; type: string }> = [
   { key: 'UserId',           type: 'string'  },
@@ -59,9 +60,10 @@ app.post('/hits', (req: Request, res: Response) => {
   }
 
   console.log("Received hit data:", payload);
-  mainWindow?.webContents.send('log', JSON.stringify(payload));
+  const savedHitData = insertEntry(payload);
+  mainWindow?.webContents.send('hit', JSON.stringify(savedHitData));
 
-  return res.status(200).json({ message: 'OK', data: payload })
+  return res.status(200).json({ message: 'OK', data: savedHitData })
 });
 
 export function startServer({

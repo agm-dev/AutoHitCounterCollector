@@ -27,3 +27,11 @@ export interface RunEntry {
   igt_ms: number
   received_at: string
 }
+
+export interface Stats {
+  total: number
+  today: number
+  unique_users: number
+  unique_games: number
+  lastReceived: string | null
+}
