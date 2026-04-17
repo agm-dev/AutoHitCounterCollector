@@ -57,16 +57,16 @@ export function getEntryById(id: number): RunEntry | undefined {
 
 export function getRecentEntries(limit = 50): RunEntry[] {
   return db
-    .prepare('SELECT * FROM hits ORDER BY received_at DESC LIMIT ?')
+    .prepare('SELECT * FROM hits ORDER BY timestamp DESC LIMIT ?')
     .all(limit) as RunEntry[]
 }
 
 export function getStats(): Stats {
   const total        = (db.prepare('SELECT COUNT(*) as c FROM hits').get() as { c: number }).c
-  const today        = (db.prepare(`SELECT COUNT(*) as c FROM hits WHERE date(received_at) = date('now')`).get() as { c: number }).c
+  const today        = (db.prepare(`SELECT COUNT(*) as c FROM hits WHERE date(timestamp) = date('now')`).get() as { c: number }).c
   const unique_users = (db.prepare('SELECT COUNT(DISTINCT user_id) as c FROM hits').get() as { c: number }).c
   const unique_games = (db.prepare('SELECT COUNT(DISTINCT game) as c FROM hits').get() as { c: number }).c
-  const last         = db.prepare('SELECT received_at FROM hits ORDER BY received_at DESC LIMIT 1').get() as { received_at: string } | undefined
+  const last         = db.prepare('SELECT timestamp FROM hits ORDER BY timestamp DESC LIMIT 1').get() as { timestamp: string } | undefined
 
-  return { total, today, unique_users, unique_games, lastReceived: last?.received_at ?? null }
+  return { total, today, unique_users, unique_games, lastReceived: last?.timestamp ?? null }
 }

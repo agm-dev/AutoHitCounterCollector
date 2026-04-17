@@ -2,6 +2,7 @@
 import { timeAgo } from "@renderer/utils/timeAgo"
 import "./Dashboard.css"
 import { formatIgt } from "@renderer/utils/formatIgt"
+import { useNow } from "@renderer/utils/useNow"
 
 export interface Stats {
   total: number
@@ -33,6 +34,8 @@ type Props = {
 }
 
 export default function Dashboard({ stats, hits }: Props) {
+  const now = useNow();
+
   return (
     <div className="container">
       <div className="stats">
@@ -89,7 +92,7 @@ export default function Dashboard({ stats, hits }: Props) {
                 <td>{h.total_hits}</td>
                 <td>{h.total_pb}</td>
                 <td>{formatIgt(h.igt_ms)}</td>
-                <td>{timeAgo(h.received_at)}</td>
+                <td>{timeAgo(h.timestamp)}</td>
               </tr>
             ))}
           </tbody>
