@@ -38,6 +38,7 @@ export default function Dashboard({ stats, hits }: Props) {
 
   return (
     <div className="container">
+      <div style={{ display: 'none'}}>{now}</div>
       <div className="stats">
         <div className="stat-card">
           <span className="label">Total hits</span>
